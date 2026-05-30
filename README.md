@@ -1,17 +1,21 @@
-# climate_app
+# Climate App
 
-A new Flutter project.
+Aplicación Flutter desarrollada para la práctica P2.1.
 
-## Getting Started
+## ¿Qué es esta app?
 
-This project is a starting point for a Flutter application.
+Aplicación simple que muestra información climática simulada mediante widgets Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+## ¿Cómo ejecutarla?
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+1. flutter pub get
+2. flutter run
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Resultado esperado
+
+La aplicación muestra:
+- Temperatura
+- Ciudad
+- Icono climático
+
+Además se verificó el funcionamiento de Hot Reload.
