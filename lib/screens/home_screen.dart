@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/weather_provider.dart';
+import '../utils/weather_utils.dart';
 
 import '../widgets/weather_icon.dart';
 import '../widgets/temperature_card.dart';
 import '../widgets/weather_info.dart';
+
 import 'search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,31 +17,45 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
+    final provider = Provider.of<WeatherProvider>(context);
+    final weather = provider.weather;
+
     Widget weatherContent = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const TemperatureCard(
-          temperature: '38°C',
+        TemperatureCard(
+          temperature: formatTemperature(
+            weather.temp,
+            weather.unit,
+          ),
         ),
+
         const SizedBox(height: 16),
-        const Text(
-          'Santiago de Querétaro',
-          style: TextStyle(
+
+        Text(
+          weather.city,
+          style: const TextStyle(
             fontSize: 24,
             color: Colors.grey,
           ),
         ),
+
         const SizedBox(height: 32),
-        const WeatherIcon(
-          icon: Icons.cloud,
-          color: Color.fromARGB(255, 243, 33, 33),
+
+        WeatherIcon(
+          icon: getWeatherIcon(weather.condition),
+          color: const Color.fromARGB(255, 243, 33, 33),
         ),
+
         const SizedBox(height: 24),
+
         const WeatherInfo(
           humidity: '65%',
           wind: '12 km/h',
         ),
+
         const SizedBox(height: 32),
+
         ElevatedButton(
           onPressed: () {
             Navigator.push(
@@ -47,6 +66,15 @@ class HomeScreen extends StatelessWidget {
             );
           },
           child: const Text('Buscar Ciudades'),
+        ),
+
+        const SizedBox(height: 16),
+
+        ElevatedButton(
+          onPressed: () {
+            provider.changeWeather();
+          },
+          child: const Text('Cambiar Clima'),
         ),
       ],
     );
@@ -61,7 +89,9 @@ class HomeScreen extends StatelessWidget {
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(child: weatherContent),
+                  Expanded(
+                    child: weatherContent,
+                  ),
                 ],
               )
             : weatherContent,
