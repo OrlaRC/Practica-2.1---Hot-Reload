@@ -20,3 +20,17 @@ IconData getWeatherIcon(String condition) {
       return Icons.cloud;
   }
 }
+
+Color getWeatherColor(String condition) {
+  switch (condition.toLowerCase()) {
+    case 'sunny':
+      return Colors.orange;
+
+    case 'rainy':
+      return Colors.blue;
+
+    case 'cloudy':
+    default:
+      return Colors.blueGrey;
+  }
+}

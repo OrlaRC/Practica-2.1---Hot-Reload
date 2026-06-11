@@ -12,11 +12,24 @@ class WeatherInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Humedad: $humidity | Viento: $wind',
-      style: const TextStyle(
-        fontSize: 18,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Row(
+          children: [
+            const Icon(Icons.water_drop),
+            const SizedBox(width: 6),
+            Text(humidity),
+          ],
+        ),
+        Row(
+          children: [
+            const Icon(Icons.air),
+            const SizedBox(width: 6),
+            Text(wind),
+          ],
+        ),
+      ],
     );
   }
 }

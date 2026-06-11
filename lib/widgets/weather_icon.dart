@@ -14,7 +14,7 @@ class WeatherIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       icon,
-      size: 120,
+      size: 90,
       color: color,
     );
   }

@@ -13,9 +13,9 @@ class TemperatureCard extends StatelessWidget {
     return Text(
       temperature,
       style: const TextStyle(
-        fontSize: 72,
+        fontSize: 64,
         fontWeight: FontWeight.bold,
-        color: Color.fromARGB(255, 27, 163, 17),
+        color: Colors.white,
       ),
     );
   }
